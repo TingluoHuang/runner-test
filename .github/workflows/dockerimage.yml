@@ -13,6 +13,6 @@ jobs:
     - name: Build and Publish the Docker image
       run: |
         docker login -u huangtingluo -p ${{secrets.dockerpat}}
-        docker build . --file Dockerfile --tag huangtingluo/runner-test:$GITHUB_SHA --tag huangtingluo/runner-test:latest --build-arg RUNNER_REPO="https://github.com/bbq-beets/ting-test" --build-arg RUNNER_TOKEN=${{secrets.runnertoken}}
+        docker build . --file Dockerfile --tag huangtingluo/runner-test:$GITHUB_SHA --tag huangtingluo/runner-test:latest --build-arg RUNNER_REPO="https://github.com/TingluoHuang/proxy-test" --build-arg RUNNER_TOKEN=${{secrets.runnertoken}}
         docker push huangtingluo/runner-test:$GITHUB_SHA
         docker push huangtingluo/runner-test:latest
