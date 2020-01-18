@@ -14,7 +14,7 @@ RUN mkdir -p /github/home/actions-runner
 RUN cd /github/home/actions-runner && curl -O -L https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz
 RUN cd /github/home/actions-runner && tar xzf ./actions-runner-linux-x64-2.164.0.tar.gz
 
-RUN cd /github/home/actions-runner && ./config.sh --url $RUNNER_REPO --token $RUNNER_TOKEN --unattended --replace
+RUN cd /github/home/actions-runner && ./bin/installdependencies.sh && ./config.sh --url $RUNNER_REPO --token $RUNNER_TOKEN --unattended --replace
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
