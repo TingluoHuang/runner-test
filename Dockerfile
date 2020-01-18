@@ -4,6 +4,8 @@ LABEL maintainer="tingluohuang@github.com"
 ARG RUNNER_REPO
 ARG RUNNER_TOKEN
 
+ENV RUNNER_ALLOW_RUNASROOT=1
+
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y curl \
  && rm -rf /var/lib/apt/lists/*
