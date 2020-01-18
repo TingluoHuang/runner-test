@@ -8,11 +8,11 @@ RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y curl \
  && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /github/home/actions-runner && cd /github/home/actions-runner
-RUN curl -O https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz
-RUN tar xzf ./actions-runner-linux-x64-2.164.0.tar.gz
+RUN mkdir -p /github/home/actions-runner
+RUN cd /github/home/actions-runner && curl -O https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz
+RUN cd /github/home/actions-runner && tar xzf ./actions-runner-linux-x64-2.164.0.tar.gz
 
-RUN ./config.sh --url $RUNNER_REPO --token $RUNNER_TOKEN --unattended --replace
+RUN cd /github/home/actions-runner && ./config.sh --url $RUNNER_REPO --token $RUNNER_TOKEN --unattended --replace
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
